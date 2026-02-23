@@ -37,6 +37,9 @@ yarn-error.*
 # Claude Code
 .claude/
 
+# Supabase CLI temp files
+supabase/.temp/
+
 # Sensitive native files
 google-services.json
 GoogleService-Info.plist
