@@ -31,7 +31,15 @@ yarn-error.*
 *.pem
 
 # local env files
+.env
 .env*.local
+
+# Claude Code
+.claude/
+
+# Sensitive native files
+google-services.json
+GoogleService-Info.plist
 
 # typescript
 *.tsbuildinfo
