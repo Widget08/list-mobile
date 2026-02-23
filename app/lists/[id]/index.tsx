@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useLocalSearchParams, useRouter, Stack } from 'expo-router';
-import { Plus, Settings, Users, Share2, ThumbsUp, ThumbsDown, Star, MessageCircle } from 'lucide-react-native';
+import { Plus, Settings, Users, ThumbsUp, ThumbsDown, Star, MessageCircle, ChevronLeft } from 'lucide-react-native';
 import { useList } from '@/hooks/useLists';
 import { useListItems } from '@/hooks/useListItems';
 import { useListSettings } from '@/hooks/useListSettings';
@@ -165,6 +165,16 @@ export default function ListDetailScreen() {
       <Stack.Screen
         options={{
           title: list?.name ?? 'List',
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => router.back()}
+              className="flex-row items-center gap-1 mr-2"
+              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+            >
+              <ChevronLeft size={22} color="#6366F1" />
+              <Text className="text-brand text-base font-medium">Lists</Text>
+            </TouchableOpacity>
+          ),
           headerRight: () => (
             <View className="flex-row gap-4 mr-2">
               <TouchableOpacity onPress={() => router.push(`/lists/${id}/members` as any)}>
@@ -231,14 +241,6 @@ export default function ListDetailScreen() {
         }
         contentContainerStyle={{ paddingTop: 8, paddingBottom: 100 }}
       />
-
-      {/* Share FAB */}
-      <TouchableOpacity
-        className="absolute bottom-28 right-6 bg-white w-12 h-12 rounded-full items-center justify-center shadow border border-gray-200"
-        onPress={() => router.push(`/lists/${id}/invite` as any)}
-      >
-        <Share2 size={20} color="#6366F1" />
-      </TouchableOpacity>
 
       {/* Add item FAB */}
       <TouchableOpacity

@@ -9,8 +9,8 @@ import {
   Alert,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useLocalSearchParams } from 'expo-router';
-import { Plus, Trash2 } from 'lucide-react-native';
+import { useLocalSearchParams, useRouter } from 'expo-router';
+import { Plus, Trash2, ChevronRight, UserPlus } from 'lucide-react-native';
 import { useListSettings, useUpdateListSettings, useListStatuses, useCreateStatus, useDeleteStatus } from '@/hooks/useListSettings';
 import type { SortBy } from '@/types/database';
 
@@ -45,6 +45,7 @@ function ToggleRow({
 
 export default function ListSettingsScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
+  const router = useRouter();
   const { data: settings } = useListSettings(id);
   const { mutate: updateSettings } = useUpdateListSettings(id);
   const { data: statuses } = useListStatuses(id);
@@ -86,6 +87,20 @@ export default function ListSettingsScreen() {
   return (
     <SafeAreaView className="flex-1 bg-gray-50" edges={['bottom']}>
       <ScrollView contentContainerStyle={{ padding: 16 }}>
+
+        {/* Sharing */}
+        <View className="bg-white rounded-2xl px-4 mb-4 border border-gray-100">
+          <TouchableOpacity
+            className="flex-row items-center justify-between py-3.5"
+            onPress={() => router.push(`/lists/${id}/invite` as any)}
+          >
+            <View className="flex-row items-center gap-3">
+              <UserPlus size={18} color="#6366F1" />
+              <Text className="text-base text-gray-800">Invite &amp; Sharing</Text>
+            </View>
+            <ChevronRight size={18} color="#D1D5DB" />
+          </TouchableOpacity>
+        </View>
 
         {/* Features */}
         <View className="bg-white rounded-2xl px-4 mb-4 border border-gray-100">
