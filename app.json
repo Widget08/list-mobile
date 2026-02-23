@@ -15,13 +15,13 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.listapp.mobile",
+      "bundleIdentifier": "com.devups.listmobile",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       }
     },
     "android": {
-      "package": "com.listapp.mobile",
+      "package": "com.devups.listmobile",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#6366F1"
@@ -31,13 +31,33 @@
       "permissions": [
         "android.permission.VIBRATE",
         "android.permission.INTERNET",
+        "android.permission.RECEIVE_BOOT_COMPLETED",
+        "android.permission.VIBRATE",
+        "android.permission.INTERNET",
         "android.permission.RECEIVE_BOOT_COMPLETED"
       ],
       "intentFilters": [
         {
           "action": "SEND",
-          "data": [{ "mimeType": "text/plain" }],
-          "category": ["DEFAULT"]
+          "data": [
+            {
+              "mimeType": "text/plain"
+            }
+          ],
+          "category": [
+            "DEFAULT"
+          ]
+        },
+        {
+          "action": "SEND",
+          "data": [
+            {
+              "mimeType": "text/plain"
+            }
+          ],
+          "category": [
+            "DEFAULT"
+          ]
         }
       ]
     },
@@ -59,13 +79,29 @@
       [
         "expo-build-properties",
         {
-          "ios": { "useFrameworks": "static" },
-          "android": { "compileSdkVersion": 35 }
+          "ios": {
+            "useFrameworks": "static"
+          },
+          "android": {
+            "compileSdkVersion": 35
+          }
         }
       ]
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "89a27277-8149-4fe7-b95f-24dfd85305d4"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/89a27277-8149-4fe7-b95f-24dfd85305d4"
     }
   }
 }
