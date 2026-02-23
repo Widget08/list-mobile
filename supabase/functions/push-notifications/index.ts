@@ -61,7 +61,7 @@ async function getTokensForUsers(
 serve(async (req) => {
   // Validate webhook secret
   const authHeader = req.headers.get('Authorization');
-  const webhookSecret = Deno.env.get('SUPABASE_WEBHOOK_SECRET');
+  const webhookSecret = Deno.env.get('WEBHOOK_SECRET');
   if (!webhookSecret || authHeader !== `Bearer ${webhookSecret}`) {
     return new Response('Unauthorized', { status: 401 });
   }
